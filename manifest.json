@@ -5,7 +5,10 @@
     "version": "1.0",
     "permissions": [
       "contextMenus", 
-      "tabs"
+      "tabs",
+      "clipboardWrite",
+      "activeTab",
+      "scripting"  
     ],
     "icons": {
       "16": "Assets/logo-16.png",

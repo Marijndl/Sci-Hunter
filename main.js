@@ -1,3 +1,18 @@
+// To be injected to the active tab
+function contentCopy(text) {
+  navigator.clipboard.writeText(text);
+}
+
+async function copyLink(text) {
+  const link = await text
+  const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true, });
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    func: contentCopy,
+    args: [link],
+  });
+}
+
 searchSciHub = function(DOI){
     var query = DOI.selectionText;
     chrome.tabs.create({url: "https://www.sci-hub.se/" + query});
@@ -25,7 +40,7 @@ getAPA = function(DOI){
     // Process the response data here
     const APA = data.citations[0].citation;
     console.log(APA);
-    // navigator.clipboard.writeText(APA)
+    copyLink(APA);
   })
   .catch(error => {
     // Handle any errors here
@@ -49,7 +64,7 @@ chrome.contextMenus.removeAll(function() {
 
   chrome.contextMenus.create({
     id: "3",
-    title: "Copy APA citation to clipboards",
+    title: "Copy APA citation to clipboard",
     contexts:["selection"]
     });
   
