@@ -1,0 +1,15 @@
+{
+    "manifest_version": 1,
+    "name": "Sci Hunter",
+    "short_name": "SciHunt",
+    "description": "Become an academic weapon with Sci Hunter!",
+    "version": "0.0.1",
+    "minimum_chrome_version": "38",
+    "permissions": [
+      "contextMenus", 
+      "tabs"],
+    "icons": {
+      "128": "assets/logo.png"
+    },
+    "background": {"page": "idle.html"}
+  }
