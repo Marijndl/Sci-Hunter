@@ -12,7 +12,6 @@
       "128": "Assets/logo-128.png"      
     },
     "background": {
-      "page": "idle.html",
       "service_worker": "main.js"
     }
   }
