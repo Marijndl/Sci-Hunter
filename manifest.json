@@ -9,7 +9,7 @@
       "contextMenus", 
       "tabs"],
     "icons": {
-      "128": "Assets/logo.png"
+      "128": "Assets/logo-128.png"
     },
     "background": {"page": "idle.html"}
   }
