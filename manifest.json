@@ -1,5 +1,5 @@
 {
-    "manifest_version": 3,
+    "manifest_version": 2,
     "name": "Sci Hunter",
     "short_name": "SciHunt",
     "description": "Become an academic weapon with Sci Hunter!",
@@ -9,7 +9,8 @@
       "contextMenus", 
       "tabs"],
     "icons": {
-      "128": "Assets/logo-128.png"
+      "16": "Assets/logo-16.png",
+      "128": "Assets/logo-128.png"      
     },
     "background": {"page": "idle.html"}
   }
