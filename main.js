@@ -13,6 +13,31 @@ async function copyLink(text) {
   });
 }
 
+function selectCopy() {
+  var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+    }
+  return text
+}
+
+async function copySelectedText(input) {
+  var text = await input
+  const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true, });
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    func: selectCopy
+  })
+  .then(injectionResults => {
+    text = injectionResults[0].result;
+    console.log(text);
+    getAPA(text);
+    }
+  );  
+}
+
 searchSciHub = function(DOI){
     var query = DOI.selectionText;
     chrome.tabs.create({url: "https://www.sci-hub.se/" + query});
@@ -25,7 +50,13 @@ APAGenerator = function(title){
 };
 
 getAPA = function(DOI){
-  var query = DOI.selectionText;
+  var query = "";
+  if (typeof DOI === "string"){
+    query = DOI;
+  }
+  else {
+    query = DOI.selectionText;
+  }
   var apiUrl = "https://api.citeas.org/product/" + query + "?email=test@example.com";
 
   fetch(apiUrl)
@@ -77,5 +108,12 @@ chrome.contextMenus.onClicked.addListener(function(info, tab) {
       APAGenerator(info);
   } else if (info.menuItemId === "3") {
       getAPA(info);
+  }
+});
+
+chrome.commands.onCommand.addListener((command) => {
+  console.log(`Command "${command}" called`);
+  if (command === "APACopy") {
+    const text = copySelectedText("");
   }
 });

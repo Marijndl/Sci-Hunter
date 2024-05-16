@@ -8,7 +8,8 @@
       "tabs",
       "clipboardWrite",
       "activeTab",
-      "scripting"  
+      "scripting",
+      "commands"  
     ],
     "icons": {
       "16": "Assets/logo-16.png",
@@ -16,5 +17,14 @@
     },
     "background": {
       "service_worker": "main.js"
+    },
+    "commands": {
+      "APACopy": {
+      "suggested_key": {
+        "default": "Ctrl+I",
+        "mac": "Command+I"
+        },
+      "description": "Copy APA to the clipboard."
+      }
     }
   }
