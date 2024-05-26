@@ -12,8 +12,8 @@
       "commands"  
     ],
     "icons": {
-      "16": "Assets/logo-16.png",
-      "128": "Assets/logo-128.png"      
+      "32": "Assets/icon-32.png",
+      "128": "Assets/icon-128.png"      
     },
     "background": {
       "service_worker": "main.js"
